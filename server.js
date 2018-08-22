@@ -5,6 +5,10 @@ const PORT = process.env.PORT || 5000;
 const express = require('express');
 const app = express();
 
+var path = require('path');
+var serveStatic = require('serve-static');
+app.use(serveStatic(__dirname + "/dist"));
+
 // middleware (cors and read json body)
 const cors = require('cors');
 const path = require('path');
