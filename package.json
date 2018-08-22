@@ -1,54 +1,23 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Hurry up and pick a place to eat!",
+  "main": "server.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "start": "nodemon server.js"
   },
+  "author": "Erik Withak and Chris Golden",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.4",
     "dotenv": "^6.0.0",
-    "eslint-plugin-html": "^4.0.5",
     "express": "^4.16.3",
-    "vue": "^2.5.16",
+    "path": "^0.12.7",
     "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-beta.16",
-    "@vue/cli-plugin-eslint": "^3.0.0-beta.16",
-    "@vue/cli-service": "^3.0.0-beta.16",
-    "css-loader": "^1.0.0",
-    "vue-loader": "^15.2.4",
-    "vue-style-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.16"
-  },
-  "engines": {
-    "node": "8.10.x"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "eslint": "^4.19.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.17.5"
+  }
 }
