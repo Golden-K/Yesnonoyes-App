@@ -11,7 +11,6 @@ app.use(serveStatic(__dirname + "/dist"));
 
 // middleware (cors and read json body)
 const cors = require('cors');
-const path = require('path');
 // const morgan = require('morgan');
 // app.use(morgan('dev'));
 app.use(cors());
@@ -22,11 +21,11 @@ app.use(cors());
 //   next();
 // });
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // point to the index.html
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+app.get('/', function(req, res) {
+    res.sendfile(__dirname + '/index.html');
 });
 
 // connect to the database
