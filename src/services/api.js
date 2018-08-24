@@ -1,7 +1,7 @@
 require('dotenv').config();
 const PORT = 5000;
 // const URL = `https://24017066.eu.ngrok.io`;
-const URL = `http://localhost:${PORT}/api`;
+const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 // const URL = `https://localhost:${PORT}/api`;
 // const MAP_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
 // console.log('the url is', URL);
