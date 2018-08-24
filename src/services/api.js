@@ -1,5 +1,5 @@
 require('dotenv').config();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 // const URL = `https://24017066.eu.ngrok.io`;
 const URL = `http://localhost:${PORT}/api`;
 // const URL = `https://localhost:${PORT}/api`;
