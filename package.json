@@ -1,6 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "3.5.2"
+  },
   "description": "Hurry up and pick a place to eat!",
   "main": "server.js",
   "scripts": {
