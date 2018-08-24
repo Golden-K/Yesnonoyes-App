@@ -3,7 +3,6 @@ const PORT = process.env.PORT || 3000;
 // const URL = `https://24017066.eu.ngrok.io`;
 const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 // const URL = `https://localhost:${PORT}/api`;
-// console.log('the url is', URL);
 
 // // Check if the response is OK
 // function responseHandler(response) {
@@ -21,6 +20,8 @@ export {
 };
 
 function getLocationAPI() {
+  console.log('the url is', URL);
+
   return fetch('https://location.services.mozilla.com/v1/geolocate?key=test')
     .then(res => res.json())
     .catch(err => console.log('error retrieving location:', err));
