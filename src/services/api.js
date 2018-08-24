@@ -1,5 +1,5 @@
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 // const URL = `https://24017066.eu.ngrok.io`;
 const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 // const URL = `https://localhost:${PORT}/api`;

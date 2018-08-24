@@ -1,16 +1,16 @@
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // basic express app
-const express = require('express');
+import express, { json } from 'express';
 const app = express();
 
-var path = require('path');
-var serveStatic = require('serve-static');
+import path from 'path';
+import serveStatic from 'serve-static';
 app.use(serveStatic(__dirname + "/dist"));
 
 // middleware (cors and read json body)
-const cors = require('cors');
+import cors from 'cors';
 // app.all('*', function(req, res, next) {
 //   var origin = req.get('origin'); 
 //   res.header('Access-Control-Allow-Origin', origin);
@@ -23,7 +23,7 @@ const cors = require('cors');
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
-app.use(express.json());
+app.use(json());
 // app.use(express.static(path.join(__dirname, 'public')));
 
 // point to the index.html
@@ -32,12 +32,12 @@ app.get('/', function(req, res) {
 });
 
 // connect to the database
-const client = require('./client.js');
+import { search, reviews, business } from './client.js';
 
 // Retrieve restaurant data
 app.post('/api', (req, res, next) => {
   const body = req.body;
-  client.search({
+  search({
     limit : 1,
     offset : body.offset,
     // open_now : true,
@@ -61,7 +61,7 @@ app.post('/api', (req, res, next) => {
 // Retrieve reviews
 app.post('/api/review', (req, res, next) => {
   let body = req.body;
-  client.reviews(body.id)
+  reviews(body.id)
     .then(result => {
       res.send(result.jsonBody.reviews[0]);
     })
@@ -71,7 +71,7 @@ app.post('/api/review', (req, res, next) => {
 // Retrieve business info
 app.post('/api/business', (req, res, next) => {
   let body = req.body;
-  client.business(body.id)
+  business(body.id)
     .then(result => {
       res.send(result.jsonBody);
     })
