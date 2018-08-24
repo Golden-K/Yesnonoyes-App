@@ -11,11 +11,16 @@ app.use(serveStatic(__dirname + "/dist"));
 
 // middleware (cors and read json body)
 const cors = require('cors');
-app.all('*', function(req, res, next) {
-  var origin = req.get('origin'); 
-  res.header('Access-Control-Allow-Origin', origin);
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
+// app.all('*', function(req, res, next) {
+//   var origin = req.get('origin'); 
+//   res.header('Access-Control-Allow-Origin', origin);
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   next();
+// });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 app.use(express.json());
