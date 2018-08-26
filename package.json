@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "build": "vue-cli-service build",
-    "serve": "vue-cli-service serve"
+    "build": "vue-cli-service build"
   },
   "author": "Erik Withak and Chris Golden",
   "license": "ISC",
