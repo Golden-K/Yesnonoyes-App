@@ -4,8 +4,7 @@
   "description": "Hurry up and pick a place to eat!",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "build": "vue-cli-service build"
+    "start": "nodemon server.js"
   },
   "author": "Erik Withak and Chris Golden",
   "license": "ISC",
