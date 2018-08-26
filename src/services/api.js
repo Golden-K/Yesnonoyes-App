@@ -3,14 +3,6 @@ const PORT = process.env.PORT || 3000;
 // const URL = `https://24017066.eu.ngrok.io`;
 const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 
-// // Check if the response is OK
-// function responseHandler(response) {
-//   if(response.ok) return response.json();
-//   return response.json().then(err => {
-//     throw err.message;
-//   });
-// }
-
 export {
   getLocationAPI,
   getYelpResult,
