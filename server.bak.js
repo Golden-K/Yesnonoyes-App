@@ -1,37 +1,43 @@
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-// basic express app
+// basic express appr
 const express = require('express');
 const app = express();
 
+const path = require('path');
+const serveStatic = require('serve-static');
+app.use(serveStatic(__dirname + "/dist"));
+
 // middleware (cors and read json body)
 const cors = require('cors');
-const path = require('path');
-// const morgan = require('morgan');
-// app.use(morgan('dev'));
-app.use(cors());
-// app.use((req, res, next) => {
-//   res.append('Access-Control-Allow-Origin', ['*']);
-//   res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.append('Access-Control-Allow-Headers', 'Content-Type');
+// app.all('*', function(req, res, next) {
+//   var origin = req.get('origin'); 
+//   res.header('Access-Control-Allow-Origin', origin);
+//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
 //   next();
 // });
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
+app.use(json());
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // point to the index.html
-app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+app.get('/', function(req, res) {
+    res.sendfile(__dirname + '/index.html');
 });
 
 // connect to the database
-const client = require('./client.js');
+import { search, reviews, business } from './client.js';
 
 // Retrieve restaurant data
 app.post('/api', (req, res, next) => {
   const body = req.body;
-  client.search({
+  search({
     limit : 1,
     offset : body.offset,
     // open_now : true,
@@ -55,7 +61,7 @@ app.post('/api', (req, res, next) => {
 // Retrieve reviews
 app.post('/api/review', (req, res, next) => {
   let body = req.body;
-  client.reviews(body.id)
+  reviews(body.id)
     .then(result => {
       res.send(result.jsonBody.reviews[0]);
     })
@@ -65,7 +71,7 @@ app.post('/api/review', (req, res, next) => {
 // Retrieve business info
 app.post('/api/business', (req, res, next) => {
   let body = req.body;
-  client.business(body.id)
+  business(body.id)
     .then(result => {
       res.send(result.jsonBody);
     })
