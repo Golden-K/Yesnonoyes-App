@@ -4,6 +4,7 @@
   "description": "Hurry up and pick a place to eat!",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "postinstall": "vue-cli-service build"
   },
   "engines": {
