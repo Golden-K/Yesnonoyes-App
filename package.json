@@ -4,7 +4,6 @@
   "description": "Hurry up and pick a place to eat!",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
     "postinstall": "vue-cli-service build"
   },
   "engines": {
@@ -19,7 +18,6 @@
     "express": "^4.16.3",
     "path": "^0.12.7",
     "vue": "^2.5.17",
-    "vue-template-compiler": "^2.5.17",
     "yelp-fusion": "^2.0.3"
   },
   "devDependencies": {
