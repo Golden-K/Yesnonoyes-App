@@ -1,5 +1,5 @@
 require('dotenv').config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 // const URL = `http://localhost:${PORT}/api`;
 const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 // const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
