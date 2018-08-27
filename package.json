@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "postinstall": "npm vue-cli-service build"
+    "postinstall": "vue-cli-service build"
   },
   "engines": {
     "node": "8.10.0"
