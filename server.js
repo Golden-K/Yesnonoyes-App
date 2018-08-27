@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // point to the index.html
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendfile(__dirname + 'index.html');
 });
 
 // connect to the database
