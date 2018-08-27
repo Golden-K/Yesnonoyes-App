@@ -18,15 +18,11 @@ app.use(cors());
 //   next();
 // });
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/dist')));
 
 // point to the index.html
 app.get('/', function (req, res) {
   res.sendfile(__dirname + '/index.html');
-});
-
-app.get('*', function (request, response){
-  response.sendFile(path.resolve(__dirname, './public', 'index.html'));
 });
 
 // connect to the database
