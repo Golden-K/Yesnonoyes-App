@@ -1,18 +1,7 @@
 require('dotenv').config();
 const PORT = process.env.PORT || 3000;
-// const URL = `http://localhost:${PORT}/api`;
-const URL = `https://pick-a-spot.herokuapp.com/:${PORT}/api`;
 // const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
-// const MAP_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
-// console.log('the url is', URL);
-
-// // Check if the response is OK
-// function responseHandler(response) {
-//   if(response.ok) return response.json();
-//   return response.json().then(err => {
-//     throw err.message;
-//   });
-// }
+const URL = `http://localhost:${PORT}/api`;
 
 export {
   getLocationAPI,
@@ -22,6 +11,8 @@ export {
 };
 
 function getLocationAPI() {
+  console.log('the url is', URL);
+
   return fetch('https://location.services.mozilla.com/v1/geolocate?key=test')
     .then(res => res.json())
     .catch(err => console.log('error retrieving location:', err));

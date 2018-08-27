@@ -1,0 +1,13 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #222831;
+  max-width: 666px;
+  /* font-family: 'Fjalla One', sans-serif; */
+  
+  /* font-family: 'Acme', sans-serif; */
+  font-family: 'Exo 2', sans-serif;
+  /* font-family: 'Play', sans-serif; */
+  /* letter-spacing: 3px; */
+  /* line-height: 3rem; */
+}
