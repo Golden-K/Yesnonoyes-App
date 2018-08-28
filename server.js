@@ -32,13 +32,15 @@ const client = require('./client.js');
 // Retrieve restaurant data
 app.post('/api', (req, res, next) => {
   const body = req.body;
+  let trigger = false;
   if(body.location.length === 5) {
+    trigger = true;
     client.search({
       limit : 1,
       offset : body.offset,
       // open_now : true,
-      // sort_by: 'best_match',
-      sort_by: 'rating',
+      sort_by: 'best_match',
+      // sort_by: 'rating',
       term: 'restaurants',
       location: body.location,
       radius : body.radius,
@@ -48,7 +50,7 @@ app.post('/api', (req, res, next) => {
       .then(result => {
         result.jsonBody.businesses[0]
           ? res.send(result.jsonBody.businesses[0])
-          : res.send({ error : true, result: result.jsonBody });
+          : res.send({ error : true, result: result.jsonBody, trigger: trigger });
       })
       .catch(next);
   } else {
