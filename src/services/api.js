@@ -31,6 +31,7 @@ function getYelpResult(categories, settings, offset, location) {
   if(offset === undefined) {
     offset = 0;
   }
+  let radius = parseInt(settings.distance * 1609) - 222;
   categories += settings.gluttonFree ? ',glutton_free' : '';
   categories += settings.vegan ? ',vegan' : '';
   categories += settings.vegetarian ? ',vegetarian' : '';
@@ -39,7 +40,7 @@ function getYelpResult(categories, settings, offset, location) {
     latitude: location.lat,
     longitude: location.lon,
     location: settings.zipCode,
-    radius: parseInt(settings.distance * 1609) - 222,
+    radius: radius > 40000 ? 40000 : radius,
     price: settings.price.toString(),
     offset: offset
   };
