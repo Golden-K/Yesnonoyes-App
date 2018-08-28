@@ -40,7 +40,7 @@ function getYelpResult(categories, settings, offset, location) {
     latitude: location.lat,
     longitude: location.lon,
     location: settings.zipCode,
-    radius: parseInt(settings.distance * 1609) - 225,
+    radius: parseInt(settings.distance * 1609) - 222,
     price: settings.price.toString(),
     offset: offset
   };
