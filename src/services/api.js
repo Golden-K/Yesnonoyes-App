@@ -2,9 +2,8 @@ require('dotenv').config();
 // const PORT = process.env.PORT || 3000;
 const PORT = '';
 console.log('process.env.PORT=', process.env.PORT);
-// const URL = `http://localhost:${PORT}/api`;
+// const URL = `https://localhost:${PORT}/api`;
 const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
-// const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 // const MAP_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
 // console.log('the url is', URL);
 
@@ -40,10 +39,12 @@ function getYelpResult(categories, settings, offset, location) {
     categories: categories,
     latitude: location.lat,
     longitude: location.lon,
+    location: settings.zipCode,
     radius: parseInt(settings.distance * 1609) - 225,
     price: settings.price.toString(),
     offset: offset
   };
+  console.log('search', search, '\n settisng', settings, 'location type', typeof search.location);
   return fetch(`${URL}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

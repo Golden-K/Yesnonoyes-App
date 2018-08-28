@@ -101,7 +101,7 @@
         <span class="fa fa-gear" @click="toggleView('settings')" />
       </span>
       <img id="food-image" src="./food.png">
-      <span id="filter" />
+      <span id="filter"  @click="startAsking()"/>
       <span id="get-started" @click="startAsking()">
         <h1>Click here to get started!</h1>
       </span>
@@ -133,7 +133,6 @@ export default {
       view: { curr : '' },
       searchResult: {},
       searchReview: {},
-      message: 'Pick a damn spot to eat already!',
       settings: {}
     };
   },
@@ -165,7 +164,7 @@ export default {
         direction = '1000px';
       }
       let card = document.getElementById(id);
-      card.style.transitionDuration = '.25s';
+      card.style.transitionDuration = '.2s';
       card.style.left = direction;
       card.style.opacity = '0';
       // Timeouts for style.. probably a better way to do it
@@ -178,7 +177,7 @@ export default {
         card.style.left = '50%';
         card.style.opacity = '1';
         card.style.display = 'block'
-      }, 300);
+      }, 200);
     },
 
     toggleView(view) {

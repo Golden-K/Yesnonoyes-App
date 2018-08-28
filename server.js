@@ -32,25 +32,47 @@ const client = require('./client.js');
 // Retrieve restaurant data
 app.post('/api', (req, res, next) => {
   const body = req.body;
-  client.search({
-    limit : 1,
-    offset : body.offset,
-    // open_now : true,
-    sort_by: 'best_match',
-    // sort_by: 'rating',
-    term: 'restaurants',
-    latitude : body.latitude,
-    longitude : body.longitude,
-    radius : body.radius,
-    price : body.price,
-    categories: body.categories
-  })
-    .then(result => {
-      result.jsonBody.businesses[0]
-        ? res.send(result.jsonBody.businesses[0])
-        : res.send({ error : true });
+  if(body.location.length === 5) {
+    client.search({
+      limit : 1,
+      offset : body.offset,
+      // open_now : true,
+      sort_by: 'best_match',
+      // sort_by: 'rating',
+      term: 'restaurants',
+      location: body.location,
+      radius : body.radius,
+      price : body.price,
+      categories: body.categories
     })
-    .catch(next);
+      .then(result => {
+        result.jsonBody.businesses[0]
+          ? res.send(result.jsonBody.businesses[0])
+          : res.send({ error : true });
+      })
+      .catch(next);
+  } else {
+    client.search({
+      limit : 1,
+      offset : body.offset,
+      // open_now : true,
+      sort_by: 'best_match',
+      // sort_by: 'rating',
+      term: 'restaurants',
+      latitude : body.latitude,
+      longitude : body.longitude,
+      radius : body.radius,
+      price : body.price,
+      categories: body.categories
+    })
+      .then(result => {
+        result.jsonBody.businesses[0]
+          // ? res.send(result.jsonBody.businesses[0])
+          ? res.send({ first: result.jsonBody.businesses[0], second: body })
+          : res.send({ error : true });
+      })
+      .catch(next);
+  }
 });
 
 // Retrieve reviews
@@ -72,16 +94,5 @@ app.post('/api/business', (req, res, next) => {
     })
     .catch(next);
 });
-
-// app.get('/api/:id', (req, res, next) => {
-//   console.log('the id is', req.params.id);
-//   client.business({
-//     id : req.params.id
-//   })
-//     .then(result => {
-//       console.log('we got a result? in the server', result);
-//     })
-//     .catch(next);
-// });
 
 app.listen(PORT, () => console.log(`server running... on port ${PORT}`));
