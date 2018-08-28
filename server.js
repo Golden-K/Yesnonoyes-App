@@ -58,12 +58,12 @@ app.post('/api', (req, res, next) => {
       // open_now : true,
       sort_by: 'best_match',
       // sort_by: 'rating',
-      term: 'restaurants',
+      categories: 'restaurants',
       latitude : body.latitude,
       longitude : body.longitude,
       radius : body.radius,
       price : body.price,
-      categories: body.categories
+      term: body.categories
     })
       .then(result => {
         result.jsonBody.businesses[0]
