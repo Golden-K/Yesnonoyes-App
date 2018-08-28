@@ -1,7 +1,6 @@
 require('dotenv').config();
 // const PORT = process.env.PORT || 3000;
 const PORT = '';
-console.log('process.env.PORT=', process.env.PORT);
 // const URL = `https://localhost:${PORT}/api`;
 const URL = `https://pick-a-spot.herokuapp.com:${PORT}/api`;
 // const MAP_URL = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
