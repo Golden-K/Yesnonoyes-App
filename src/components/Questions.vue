@@ -65,14 +65,12 @@ export default {
     },
 
     handleNo() {
-      this.handleSwipe('questions', 'l');
-      // Timeout only necessarry for aesthetics
-      setTimeout(() => {
+      this.handleSwipe('questions', 'l', () => {
         this.randomCat();
         if(this.copyCat.length === 0) {
           this.toggleView('noresult');
         }
-      }, 250);
+      });
     },
 
     getResult() {

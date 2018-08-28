@@ -155,7 +155,7 @@ export default {
       return JSON.parse(JSON.stringify(GLOBAL_CATEGORIES));
     },
 
-    handleSwipe(id, dir) {
+    handleSwipe(id, dir, reset) {
       // Swipe animation
       let direction;
       if(dir === 'l') {
@@ -165,14 +165,20 @@ export default {
         direction = '1000px';
       }
       let card = document.getElementById(id);
+      card.style.transitionDuration = '.25s';
       card.style.left = direction;
       card.style.opacity = '0';
-      card.style.transitionDuration = '.25s';
+      // Timeouts for style.. probably a better way to do it
       setTimeout(() => {
+        card.style.display = 'none';
+      }, 100);
+      setTimeout(() => {
+        reset();
+        card.style.transitionDuration = '0s';
         card.style.left = '50%';
         card.style.opacity = '1';
-        card.style.transitionDuration = '0s';
-      }, 250);
+        card.style.display = 'block'
+      }, 300);
     },
 
     toggleView(view) {

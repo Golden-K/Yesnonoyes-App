@@ -165,16 +165,6 @@ export default {
     align-items: center;
     padding: 6px 0;
 }
-/* #col-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-#col-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
 .checkbox {
     transform: scale(2);
 }
@@ -196,5 +186,8 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+#button-container input {
+    font-size: 1.5rem;
 }
 </style>

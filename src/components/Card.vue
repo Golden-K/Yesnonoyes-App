@@ -144,16 +144,14 @@ export default {
     handlePhoto(num, id) {
       // Right swipe
       if(num > 0 && this.currentPhotoNum < 2) {
-        this.handleSwipe(id, 'r');
-        setTimeout(() => {
+        this.handleSwipe(id, 'r', () => {
           this.currentPhotoNum += num;
-        }, 200);
+        });
       }
       else if(num < 0 && this.currentPhotoNum > 0) {
-        this.handleSwipe(id, 'l');
-        setTimeout(() => {
+        this.handleSwipe(id, 'l', () => {
           this.currentPhotoNum += num;
-        }, 200);
+        });
       }
     },
 
@@ -240,18 +238,15 @@ export default {
       }
     }
   },
-  created() {
-    setTimeout(() => {
-      detectSwipe('img-main-container', (id, dir) => {
-        // console.log('direction = ', dir);
-        if(dir === 'r') {
-          this.handlePhoto(1, 'img-main');
-        }
-        else if(dir === 'l') {
-          this.handlePhoto(-1, 'img-main');
-        }
-      });
-    }, 250);
+  mounted() {
+    detectSwipe('img-main-container', (id, dir) => {
+      if(dir === 'r') {
+        this.handlePhoto(-1, 'img-main');
+      }
+      else if(dir === 'l') {
+        this.handlePhoto(1, 'img-main');
+      }
+    });
   }
 };
 </script>
@@ -330,6 +325,7 @@ h3 {
   overflow: hidden;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   height: 200px;
@@ -402,6 +398,7 @@ h3 {
   padding: 3px 6px 0;
 }
 #user-img {
+  display: relative;
   height: 69px;
   width: auto;
 }

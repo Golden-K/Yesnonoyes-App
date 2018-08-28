@@ -29,18 +29,16 @@ export default {
     }
   },
 
-  created() {
-    setTimeout(() => {
-      detectSwipe('photo-zoom-main', (id, dir) => {
-        // console.log('direction = ', dir);
-        if(dir === 'r') {
-          this.handlePhoto(1, 'zoom-img');
-        }
-        else if(dir === 'l') {
-          this.handlePhoto(-1, 'zoom-img');
-        }
-      });
-    }, 0);
+  mounted() {
+    detectSwipe('photo-zoom-main', (id, dir) => {
+      // console.log('direction = ', dir);
+      if(dir === 'r') {
+        this.handlePhoto(-1, 'zoom-img');
+      }
+      else if(dir === 'l') {
+        this.handlePhoto(1, 'zoom-img');
+      }
+    });
   }
 
 };
