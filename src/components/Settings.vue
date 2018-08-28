@@ -8,51 +8,51 @@
             </span>
             <div id="main-content">
                 <form id="form">
-                    <span id="col-left">
-                        <div class="left">Glutton Free</div>
-                        <div class="left">Vegan</div>
-                        <div class="left">Vegetarian</div>
-                        <div class="left">Price</div>
-                        <div class="left">Zip Code</div>
-                        <div class="left">Distance</div>
-                    </span>
 
                     <span id="col-right">
-                        <div class="right">
+                        <div class="row">
+                            <span>Glutton Free</span>
                             <input class="checkbox" type="checkbox" v-model="settings.gluttonFree">
                         </div>
-                        <div class="right">
+                        <div class="row">
+                            <span>Vegan</span>
                             <input class="checkbox" type="checkbox" v-model="settings.vegan">
                         </div>
 
-                        <div class="right">
+                        <div class="row">
+                            <span>Vegetarian</span>
                             <input class="checkbox" type="checkbox" v-model="settings.vegetarian">
                         </div>
 
-                        <div class="right">
-                            <span v-for="i in [1, 2, 3, 4]" :key=i>
-                                <a @click="setPrice(i)">
-                                    <span :id="i + '-dollar'" :class="settings.price >= i ? 'dollar-light dollars fa fa-dollar' : 'dolar-default dollars fa fa-dollar'" />
-                                </a>
+                        <div class="row">
+                            <span class="left">Price</span>
+                            <span>
+                                <span v-for="i in [1, 2, 3, 4]" :key=i>
+                                    <a @click="setPrice(i)">
+                                        <span :id="i + '-dollar'" :class="settings.price >= i ? 'dollar-light dollars fa fa-dollar' : 'dolar-default dollars fa fa-dollar'" />
+                                    </a>
+                                </span>
                             </span>
                         </div>
 
-                        <div class="right">
-                            <div>
-                                <input class="textbox" type="text" v-model="settings.zipCode" maxlength="5" pattern="^\d$">
-                            </div>
+                        <div class="row">
+                            <span>Zip Code</span>
+                            <input class="textbox" type="text" v-model="settings.zipCode" maxlength="5" pattern="^\d$">
                         </div>
 
-                        <div class="right">
-                            <input type="range" min="1" max="25" v-model="settings.distance">
-                            <br />{{ settings.distance }}
-                            <span v-if="settings.distance == 1"> mile </span>
-                            <span v-else> miles</span>
+                        <div class="row">
+                            <span>Distance</span>
+                            <span>
+                                <input type="range" min="1" max="25" v-model="settings.distance">
+                                <br />{{ settings.distance }}
+                                <span v-if="settings.distance == 1"> mile </span>
+                                <span v-else> miles</span>
+                            </span>
                         </div>
                     </span>
 
                     <!-- Clear / Save -->
-                    <span id="button-container">
+                    <span id="button-container" class="row">
                         <div id="reset-dislikes">
                             <input class="reset-btn" type="button" @click="resetDisliked()" value="Dislikes">
                         </div>
@@ -154,22 +154,18 @@ export default {
 }
 #form {
     height: 87vh;
-    display: grid;
-    grid-template:
-        'l  r'
-        '.  .'
-        'f  f';
+    display: flex;
+    flex-direction: column;
     font-size: 25px;
 }
-.left {
-    grid-area: l;
-    text-align: left;
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
 }
-.right {
-    grid-area: r;
-    text-align: right;
-}
-#col-left {
+/* #col-left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -178,7 +174,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
 .checkbox {
     transform: scale(2);
 }
@@ -194,9 +190,6 @@ export default {
 .textbox {
     font-size: 25px;
     width: 5rem;
-}
-.clear-btn, .save-btn, .reset-btn {
-    font-size: 25px;
 }
 #button-container {
     grid-area: f;
