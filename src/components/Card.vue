@@ -279,6 +279,8 @@ ul {
 #links-container {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  min-width: 150px;
 }
 #links-container a {
   text-decoration: none;

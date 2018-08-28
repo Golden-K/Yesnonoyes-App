@@ -305,7 +305,7 @@ export default {
 
     randomSearch() {
       this.toggleView('loading');
-      let random = GLOBAL_CATEGORIES[Math.floor() * GLOBAL_CATEGORIES.length];
+      let random = GLOBAL_CATEGORIES[parseInt(Math.floor(Math.random() * GLOBAL_CATEGORIES.length) - 1)];
       this.getSearchResult(random.alias, Math.floor(Math.random() * 10));
     },
 
@@ -317,12 +317,6 @@ export default {
     },
 
     getSearchResult(categories, offset) {
-      // eslint-disable-next-line
-      // let liked = { hasLikes : false };
-      // if(localStorage.getItem('liked')) {
-      //   liked = JSON.parse(localStorage.getItem('liked'));
-      // }
-
       getYelpResult(categories, this.settings, offset, this.location)
         .then(result => {
           if(result.error) {

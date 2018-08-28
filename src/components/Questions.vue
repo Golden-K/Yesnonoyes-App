@@ -61,7 +61,9 @@ export default {
     },
 
     handleYes() {
-      this.getResult();
+      this.handleSwipe('questions', 'r', () => {
+        this.getResult();
+      });
     },
 
     handleNo() {
