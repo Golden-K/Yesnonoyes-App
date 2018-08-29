@@ -41,7 +41,7 @@ app.post('/api', (req, res, next) => {
       // open_now : true,
       sort_by: 'best_match',
       // sort_by: 'rating',
-      term: body.categories,
+      categories: body.categories,
       location: body.location,
       radius : body.radius,
       price : body.price
