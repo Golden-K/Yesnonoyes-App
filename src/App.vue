@@ -282,7 +282,7 @@ export default {
         distance: 5,
         vegan: false,
         vegetarian: false,
-        gluttonFree: false,
+        glutonFree: false,
         zipCode: ''
       };
     },

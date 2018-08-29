@@ -22,7 +22,7 @@ function getYelpResult(categories, settings, offset, location) {
   if(offset === undefined) {
     offset = 0;
   }
-  categories += settings.gluttonFree ? ',glutton_free' : '';
+  categories += settings.glutonFree ? ',gluton_free' : '';
   categories += settings.vegan ? ',vegan' : '';
   categories += settings.vegetarian ? ',vegetarian' : '';
   let search = {

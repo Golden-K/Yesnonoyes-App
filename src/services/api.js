@@ -32,7 +32,7 @@ function getYelpResult(categories, settings, offset, location) {
     offset = 0;
   }
   let radius = parseInt(settings.distance * 1609) - 222;
-  categories += settings.gluttonFree ? ',glutton_free' : '';
+  categories += settings.glutonFree ? ',gluton_free' : '';
   categories += settings.vegan ? ',vegan' : '';
   categories += settings.vegetarian ? ',vegetarian' : '';
   let search = {

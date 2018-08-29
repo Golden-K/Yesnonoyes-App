@@ -9,7 +9,7 @@
             <div id="main-content">
                 <form id="form">
                     <span id="col-left">
-                        <div class="left">Glutton Free</div>
+                        <div class="left">gluton Free</div>
                         <div class="left">Vegan</div>
                         <div class="left">Vegetarian</div>
                         <div class="left">Price</div>
@@ -19,7 +19,7 @@
 
                     <span id="col-right">
                         <div class="right">
-                            <input class="checkbox" type="checkbox" v-model="settings.gluttonFree">
+                            <input class="checkbox" type="checkbox" v-model="settings.glutonFree">
                         </div>
                         <div class="right">
                             <input class="checkbox" type="checkbox" v-model="settings.vegan">
