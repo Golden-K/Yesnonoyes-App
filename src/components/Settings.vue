@@ -11,7 +11,7 @@
 
                     <span id="col-right">
                         <div class="row">
-                            <span>gluten Free</span>
+                            <span>Gluten Free</span>
                             <input class="checkbox" type="checkbox" v-model="settings.glutenFree">
                         </div>
                         <div class="row">
