@@ -55,7 +55,6 @@ function getYelpResult(categories, settings, offset, location) {
         return null;
       }
       return res.json().then(data => {
-        console.log('Data returned', data);
         return data;
       });
     });
