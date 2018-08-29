@@ -67,8 +67,7 @@ app.post('/api', (req, res, next) => {
     })
       .then(result => {
         result.jsonBody.businesses[0]
-          // ? res.send(result.jsonBody.businesses[0])
-          ? res.send({ first: result.jsonBody.businesses[0], second: body })
+          ? res.send(result.jsonBody.businesses[0])
           : res.send({ error : true });
       })
       .catch(next);
