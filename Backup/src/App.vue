@@ -276,7 +276,7 @@ export default {
         distance: 5,
         vegan: false,
         vegetarian: false,
-        glutonFree: false,
+        glutenFree: false,
         zipCode: ''
       };
     },
