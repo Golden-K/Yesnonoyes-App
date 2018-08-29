@@ -221,6 +221,7 @@ export default {
       else {
         data.photos = parsePhotos(data.photos);
       }
+      console.log('\n\n\n\n the data issss \n\n\n\n\', data);
       data.image_url = data.image_url.replace('o.jpg', 'l.jpg');
 
       // Replace the (o)riginal (1000 x 1000) with the (l)arge (600 x 400)
