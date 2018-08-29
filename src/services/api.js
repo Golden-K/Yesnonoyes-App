@@ -44,7 +44,6 @@ function getYelpResult(categories, settings, offset, location) {
     price: settings.price.toString(),
     offset: offset
   };
-  console.log('search', search, '\n settisng', settings, 'location type', typeof search.location);
   return fetch(`${URL}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
