@@ -149,6 +149,15 @@ export default {
     this.checkSettings();
   },
 
+  created() {
+    if('golocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.location.lat = position.coords.latitude;
+        this.location.lon = position.coords.longitude;
+      });
+    }
+  },
+
   methods: {
     assignGlobal() {
       return JSON.parse(JSON.stringify(GLOBAL_CATEGORIES));
@@ -200,14 +209,14 @@ export default {
       if(this.location.lat) {
         this.toggleView('questions');
         return;
-      }
-
-      getLocationAPI()
-        .then(res => {
-          this.location.lat = res.location.lat;
-          this.location.lon = res.location.lng;
+      } else {
+        getLocationAPI()
+          .then(res => {
+            this.location.lat = res.location.lat;
+            this.location.lon = res.location.lng;
         })
-        .catch(err => console.log('error setting the location:', err));
+          .catch(err => console.log('error setting the location:', err));
+      }
     },
 
     parseResults(data) {
@@ -278,7 +287,7 @@ export default {
     resetSettings() {
       this.settings = {
         price: 2,
-        distance: 5,
+        distance: 1,
         vegan: false,
         vegetarian: false,
         glutenFree: false,
@@ -304,8 +313,9 @@ export default {
 
     randomSearch() {
       this.toggleView('loading');
-      let random = GLOBAL_CATEGORIES[parseInt(Math.floor(Math.random() * GLOBAL_CATEGORIES.length) - 1)];
-      this.getSearchResult(random.alias, Math.floor(Math.random() * 10));
+      let randomNum = parseInt(Math.floor(Math.random() * GLOBAL_CATEGORIES.length) - 1);
+      let randomSpot = GLOBAL_CATEGORIES[randomNum];
+      this.getSearchResult(randomSpot.alias, 0);
     },
 
     startAsking() {
