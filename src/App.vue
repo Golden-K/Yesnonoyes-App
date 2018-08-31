@@ -318,10 +318,15 @@ export default {
     },
 
     randomSearch() {
-      this.toggleView('loading');
-      let randomNum = parseInt(Math.floor(Math.random() * GLOBAL_CATEGORIES.length) - 1);
-      let randomSpot = GLOBAL_CATEGORIES[randomNum];
-      this.getSearchResult(randomSpot.alias, 0);
+      if(!this.location.lat) {
+        alert('It appears that we are unable to get your current location. Please journey on over to the Settings page (click the cog wheel in the upper right corner of the main page) and set a zip code. Thank you!');
+        this.toggleView('back');        
+      } else {
+        this.toggleView('loading');
+        let randomNum = parseInt(Math.floor(Math.random() * GLOBAL_CATEGORIES.length) - 1);
+        let randomSpot = GLOBAL_CATEGORIES[randomNum];
+        this.getSearchResult(randomSpot.alias, 0);
+      }
     },
 
     startAsking() {
@@ -332,25 +337,32 @@ export default {
     },
 
     getSearchResult(categories, offset) {
-      getYelpResult(categories, this.settings, offset, this.location)
-        .then(result => {
-          if(result.error) {
-            this.toggleView('noresult');
-            return;
-          }
-          else if(this.checkLiked(result.id) || this.checkDisliked(result.id)) {
-            offset++;
-            this.getSearchResult(categories, offset);
-          }
-          else {
-            this.searchResult = this.parseResults(result);
-            getYelpReview(result.id)
-              .then(res => {
-                this.searchReview = res;
-                this.toggleView('card');
-              });
-          }
-        });
+      if(!this.location.lat) {
+        alert('It appears that we are unable to get your current location. Please journey on over to the Settings page (click the cog wheel in the upper right corner of the main page) and set a zip code. Thank you!');
+        this.toggleView('back');
+        this.toggleView('back');
+        return;
+      } else {
+        getYelpResult(categories, this.settings, offset, this.location)
+          .then(result => {
+            if(result.error) {
+              this.toggleView('noresult');
+              return;
+            }
+            else if(this.checkLiked(result.id) || this.checkDisliked(result.id)) {
+              offset++;
+              this.getSearchResult(categories, offset);
+            }
+            else {
+              this.searchResult = this.parseResults(result);
+              getYelpReview(result.id)
+                .then(res => {
+                  this.searchReview = res;
+                  this.toggleView('card');
+                });
+            }
+          });
+      }
     }
   }
 };
