@@ -210,12 +210,18 @@ export default {
         this.toggleView('questions');
         return;
       } else {
-        getLocationAPI()
-          .then(res => {
-            this.location.lat = res.location.lat;
-            this.location.lon = res.location.lng;
-        })
-          .catch(err => console.log('error setting the location:', err));
+        if('golocation' in navigator) {
+          navigator.geolocation.getCurrentPosition(position => {
+            this.location.lat = position.coords.latitude;
+            this.location.lon = position.coords.longitude;
+          });
+        }
+        // getLocationAPI()
+        //   .then(res => {
+        //     this.location.lat = res.location.lat;
+        //     this.location.lon = res.location.lng;
+        // })
+        //   .catch(err => console.log('error setting the location:', err));
       }
     },
 
