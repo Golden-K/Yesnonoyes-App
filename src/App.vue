@@ -318,7 +318,7 @@ export default {
     },
 
     randomSearch() {
-      if(!this.location.lat) {
+      if(!this.location.lat && !this.settings.zipCode) {
         alert('It appears that we are unable to get your current location. Please journey on over to the Settings page (click the cog wheel in the upper right corner of the main page) and set a zip code. Thank you!');
         this.toggleView('back');        
       } else {
@@ -330,14 +330,14 @@ export default {
     },
 
     startAsking() {
-      if(!this.location.lat) {
+      if(!this.location.lat && !this.settings.zipCode) {
         this.getLocation();
       }
       this.toggleView('questions');
     },
 
     getSearchResult(categories, offset) {
-      if(!this.location.lat) {
+      if(!this.location.lat && !this.settings.zipCode) {
         alert('It appears that we are unable to get your current location. Please journey on over to the Settings page (click the cog wheel in the upper right corner of the main page) and set a zip code. Thank you!');
         this.toggleView('back');
         this.toggleView('back');

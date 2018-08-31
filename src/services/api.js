@@ -35,7 +35,7 @@ function getYelpResult(categories, settings, offset, location) {
   categories += settings.glutenFree ? ',gluten_free' : '';
   categories += settings.vegan ? ',vegan' : '';
   categories += settings.vegetarian ? ',vegetarian' : '';
-  radius = radius <= 1 ? radius = 500 : radius;
+  radius = radius <= 1 ? radius = 100 : radius;
   let search = {
     categories: categories,
     latitude: location.lat,
