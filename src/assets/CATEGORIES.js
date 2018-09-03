@@ -1,27 +1,27 @@
 export { GLOBAL_CATEGORIES };
 const GLOBAL_CATEGORIES = [
   {
-    "alias": "bbq",
+    // "alias": "bbq",
     "category": "BBQ"
   },
   {
-    "alias": "breakfast_brunch",
+    // "alias": "breakfast_brunch",
     "category": "Brunch"
   },
   {
-    "alias": "burgers",
+    // "alias": "burgers",
     "category": "Burgers"
   },
   {
-    "alias": "cajun",
+    // "alias": "cajun",
     "category": "Cajun"
   },
   {
-    "alias": "chicken_wings",
+    // "alias": "chicken_wings",
     "category": "Chicken Wings"
   },
   {
-    "alias": "chinese",
+    // "alias": "chinese",
     "category": "Chinese"
   },
   {
@@ -37,11 +37,11 @@ const GLOBAL_CATEGORIES = [
     "category": "Hawaiian"
   },
   {
-    "alias": "italian",
+    // "alias": "italian",
     "category": "Italian"
   },
   {
-    "alias": "japanese",
+    // "alias": "japanese",
     "category": "Japanese"
   },
   {
